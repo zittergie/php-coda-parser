@@ -40,12 +40,14 @@ class StatementParser
 
 		$initialBalance = 0.0;
 		$sequenceNumber = 0;
+		$paperSequenceNumber = 0;
 		/** @var InitialStateLine $initialStateLine */
 		$initialStateLine = getFirstLineOfType($lines, new LineType(LineType::InitialState));
 
 		if ($initialStateLine) {
 			$initialBalance = $initialStateLine->getBalance()->getValue();
 			$sequenceNumber = $initialStateLine->getStatementSequenceNumber()->getValue();
+			$paperSequenceNumber = $initialStateLine->getPaperStatementSequenceNumber()->getValue();
 		}
 
 
@@ -103,6 +105,7 @@ class StatementParser
 			$date,
 			$account,
 			$sequenceNumber,
+         $paperSequenceNumber,
 			$initialBalance,
 			$newBalance,
 			$newDate,

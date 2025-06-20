@@ -17,6 +17,8 @@ class Statement
 	private $account;
 	/** @var sequenceNumber */
 	private $sequenceNumber;
+	/** @var paperSequenceNumber */
+	private $paperSequenceNumber;
 	/** @var float */
 	private $initialBalance;
 	/** @var float */
@@ -37,11 +39,12 @@ class Statement
 	 * @param string $informationalMessage
 	 * @param Transaction[] $transactions
 	 */
-	public function __construct(DateTime $date, Account $account, string $sequenceNumber, float $initialBalance, float $newBalance, DateTime $newDate, string $informationalMessage, array $transactions)
+	public function __construct(DateTime $date, Account $account, string $sequenceNumber, string $paperSequenceNumber, float $initialBalance, float $newBalance, DateTime $newDate, string $informationalMessage, array $transactions)
 	{
 		$this->date = $date;
 		$this->account = $account;
 		$this->sequenceNumber = $sequenceNumber;
+		$this->paperSequenceNumber = $paperSequenceNumber;
 		$this->initialBalance = $initialBalance;
 		$this->newBalance = $newBalance;
 		$this->newDate = $newDate;
@@ -62,6 +65,11 @@ class Statement
 	public function getSequenceNumber(): string
 	{
 		return $this->sequenceNumber;
+	}
+	
+	public function getPaperSequenceNumber(): string
+	{
+		return $this->paperSequenceNumber;
 	}
 
 	public function getInitialBalance(): float
